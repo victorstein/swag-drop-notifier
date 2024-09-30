@@ -8,4 +8,4 @@ const Popup = () => {
   return <RouterProvider router={router} fallbackElement={<LoadingScreen />} />;
 };
 
-export default withErrorBoundary(withSuspense(Popup, <LoadingScreen />), <div> Error Occur </div>);
+export default withErrorBoundary(Popup, <div> Error Occur </div>);
