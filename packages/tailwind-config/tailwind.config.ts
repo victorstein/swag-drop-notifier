@@ -7,11 +7,11 @@ export default {
       colors: {
         primary: {
           DEFAULT: '#6C51F5',
-          dark: '#1b0b6a',
+          dark: '#020123',
         },
         ['bg-primary']: {
           DEFAULT: '#FFFFFF',
-          dark: '#181918',
+          dark: '#151515',
         },
       },
     },
