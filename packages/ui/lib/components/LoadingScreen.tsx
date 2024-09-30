@@ -26,6 +26,7 @@ export const LoadingScreen = () => {
           easings: easeInOut,
           duration: 1.5,
           repeat: Infinity,
+          delay: 0.2,
         }}
       />
       <img src={chrome.runtime.getURL(logo)} className="filter grayscale brightness-0 invert" alt="logo" />
