@@ -11,6 +11,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  @apply bg-bg-primary dark:bg-bg-primary-dark;
 }
 
 body * {
