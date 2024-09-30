@@ -1,8 +1,6 @@
-import { useTheme } from '@extension/shared';
 import { motion, easeInOut } from 'framer-motion';
 
 export const LoadingScreen = () => {
-  useTheme();
   const logo = 'popup/logo.svg';
 
   return (
