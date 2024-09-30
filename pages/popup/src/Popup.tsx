@@ -1,11 +1,12 @@
 import '@src/Popup.css';
-import { withErrorBoundary, withSuspense } from '@extension/shared';
-import { LoadingScreen } from './components/suspense';
-import { animatedLazy } from './helpers/animatedLazy';
+import { animatedLazy, useTheme, withErrorBoundary, withSuspense } from '@extension/shared';
+import { LoadingScreen } from '@extension/ui';
 
 const LazyMain = animatedLazy(() => import('./pages/main'));
 
 const Popup = () => {
+  useTheme();
+
   return <LazyMain />;
 };
 
