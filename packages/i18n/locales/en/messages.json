@@ -1,0 +1,30 @@
+{
+  "extensionDescription": {
+    "description": "Get notified when the next swag drop happens",
+    "message": "Don't miss the next swag drop!"
+  },
+  "extensionName": {
+    "description": "Swag Drop Notifier",
+    "message": "Swag Drop Notifier"
+  },
+  "toggleTheme": {
+    "message": "Toggle theme"
+  },
+  "loading": {
+    "message": "Loading..."
+  },
+  "greeting": {
+    "description": "Greeting message",
+    "message": "Hello, My name is $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "John Doe"
+      }
+    }
+  },
+  "hello": {
+    "description": "Placeholder example",
+    "message": "Hello $1"
+  }
+}
