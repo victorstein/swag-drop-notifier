@@ -7,7 +7,7 @@ export default {
       colors: {
         button: {
           DEFAULT: '#6C51F5',
-          dark: '#020123',
+          dark: '#3D2AAE',
         },
         title: {
           DEFAULT: '#6C51F5',
@@ -15,9 +15,9 @@ export default {
         },
         background: {
           DEFAULT: '#FFFFFF',
-          dark: '#151515',
+          dark: '#222831',
           primary: '#6C51F5',
-          ['primary-dark']: '#020123',
+          ['primary-dark']: '#3D2AAE',
         },
       },
     },
