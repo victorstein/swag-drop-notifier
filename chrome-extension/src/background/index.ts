@@ -1,6 +1,4 @@
 import 'webextension-polyfill';
-import { themeStorage } from '@extension/storage';
+import { ThemeStorage } from '@extension/storage';
 
-themeStorage.get().then(theme => {
-  console.log('theme', theme);
-});
+ThemeStorage.getState().theme;

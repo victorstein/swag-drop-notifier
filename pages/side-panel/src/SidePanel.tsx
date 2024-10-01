@@ -1,10 +1,10 @@
 import '@src/SidePanel.css';
-import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
+import { withErrorBoundary, withSuspense } from '@extension/shared';
 import { themeStorage } from '@extension/storage';
 import type { ComponentPropsWithoutRef } from 'react';
 
 const SidePanel = () => {
-  const theme = useStorage(themeStorage);
+  const theme = themeStorage.use.theme();
   const isLight = theme === 'light';
   const logo = isLight ? 'side-panel/logo_vertical.svg' : 'side-panel/logo_vertical_dark.svg';
   const goGithubSite = () =>
@@ -26,16 +26,18 @@ const SidePanel = () => {
 };
 
 const ToggleButton = (props: ComponentPropsWithoutRef<'button'>) => {
-  const theme = useStorage(themeStorage);
+  const toggleTheme = themeStorage.use.toggleTheme();
+  const theme = themeStorage.use.theme();
+
   return (
     <button
       className={
         props.className +
         ' ' +
         'font-bold mt-4 py-1 px-4 rounded shadow hover:scale-105 ' +
-        (theme === 'light' ? 'bg-white text-black' : 'bg-black text-white')
+        (theme === 'light' ? 'bg-white text-black' : 'bg-black text-width: ,hite')
       }
-      onClick={themeStorage.toggle}>
+      onClick={toggleTheme}>
       {props.children}
     </button>
   );

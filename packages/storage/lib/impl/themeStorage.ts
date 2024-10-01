@@ -1,26 +1,35 @@
-import { StorageEnum } from '../base/enums';
-import { createStorage } from '../base/base';
-import type { BaseStorage } from '../base/types';
+import { createSelectors } from '../utils';
+import { create } from 'zustand';
+import { addChromeStore } from '../utils/add-chorme-store-support';
 
-type Theme = 'light' | 'dark';
+export enum Theme {
+  LIGHT = 'light',
+  DARK = 'dark',
+}
 
-type ThemeStorage = BaseStorage<Theme> & {
-  toggle: () => Promise<void>;
+export interface IThemeStorageQueries {
+  theme: Theme;
+}
+
+export interface IThemeStorageMutations {
+  setTheme: (theme: Theme) => void;
+  toggleTheme: () => void;
+  resetTheme: () => void;
+}
+
+export type IThemeStorage = IThemeStorageQueries & IThemeStorageMutations;
+
+const ThemeStorageInitialState: IThemeStorageQueries = {
+  theme: window.window.matchMedia('(prefers-color-scheme: dark)').matches ? Theme.DARK : Theme.LIGHT,
 };
 
-const defaultTheme = window.window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+export const ThemeStorage = create<IThemeStorage>()(
+  addChromeStore(set => ({
+    ...ThemeStorageInitialState,
+    setTheme: (theme: Theme) => set({ theme }),
+    toggleTheme: () => set(state => ({ theme: state.theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT })),
+    resetTheme: () => set(ThemeStorageInitialState),
+  })),
+);
 
-const storage = createStorage<Theme>('theme-storage-key', defaultTheme, {
-  storageEnum: StorageEnum.Local,
-  liveUpdate: true,
-});
-
-// You can extend it with your own methods
-export const themeStorage: ThemeStorage = {
-  ...storage,
-  toggle: async () => {
-    await storage.set(currentTheme => {
-      return currentTheme === 'light' ? 'dark' : 'light';
-    });
-  },
-};
+export const themeStorage = createSelectors(ThemeStorage);

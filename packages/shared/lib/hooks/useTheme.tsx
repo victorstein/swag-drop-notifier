@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
-import { useStorage } from './useStorage';
 import { themeStorage } from '@extension/storage';
 
 export const useTheme = () => {
-  const theme = useStorage(themeStorage);
+  const theme = themeStorage.use.theme();
   useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');

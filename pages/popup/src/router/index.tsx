@@ -11,7 +11,7 @@ const routerDefinition: RouteObject[] = [
       return new Promise(resolve => {
         setTimeout(() => {
           resolve(null);
-        }, 2000);
+        }, 1500);
       });
     },
   },
