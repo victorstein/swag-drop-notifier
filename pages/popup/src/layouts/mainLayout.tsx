@@ -7,7 +7,7 @@ export interface MainLayoutProps {
 
 export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div className="flex h-screen w-screen flex-col p-4 items-center justify-center bg-bg-primary dark:bg-bg-primary-dark">
+    <div className="flex h-screen w-screen flex-col p-4 items-center justify-center bg-background dark:bg-background-dark">
       <AnimatePresence>
         <motion.div
           initial={{ opacity: 0 }}

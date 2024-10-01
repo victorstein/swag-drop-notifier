@@ -13,9 +13,11 @@ export const LoadingScreen = () => {
         duration: 0.3,
         delay: 1.5,
       }}
-      className={'flex justify-center items-center h-screen w-screen bg-primary absolute dark:bg-primary-dark'}>
+      className={
+        'flex justify-center items-center h-screen w-screen bg-background-primary absolute dark:bg-background-primary-dark'
+      }>
       <motion.div
-        className="absolute h-full w-full bg-primary z-10 dark:bg-primary-dark"
+        className="absolute h-full w-full bg-background-primary z-10 dark:bg-background-primary-dark"
         initial={{
           x: '100%',
         }}

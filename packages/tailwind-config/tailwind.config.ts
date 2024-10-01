@@ -5,13 +5,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: {
+        button: {
           DEFAULT: '#6C51F5',
           dark: '#020123',
         },
-        ['bg-primary']: {
+        title: {
+          DEFAULT: '#6C51F5',
+          dark: '#FFFFFF',
+        },
+        background: {
           DEFAULT: '#FFFFFF',
           dark: '#151515',
+          primary: '#6C51F5',
+          ['primary-dark']: '#020123',
         },
       },
     },
