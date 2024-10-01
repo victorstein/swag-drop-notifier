@@ -11,7 +11,7 @@ export const LoadingScreen = () => {
       transition={{
         easings: easeInOut,
         duration: 0.3,
-        delay: 1.5,
+        delay: 1.2,
       }}
       className={
         'flex justify-center items-center h-screen w-screen bg-background-primary absolute dark:bg-background-primary-dark'
