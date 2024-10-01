@@ -1,4 +1,4 @@
-import { motion, easeInOut } from 'framer-motion';
+import { motion, cubicBezier, easeInOut } from 'framer-motion';
 
 export const LoadingScreen = () => {
   const logo = 'popup/logo.svg';
@@ -25,9 +25,8 @@ export const LoadingScreen = () => {
           x: '-100%',
         }}
         transition={{
-          easings: easeInOut,
-          duration: 1.5,
-          repeat: Infinity,
+          easings: cubicBezier(0.83, 0, 0.17, 1),
+          duration: 1,
           delay: 0.2,
         }}
       />
