@@ -6,11 +6,15 @@ export default {
     extend: {
       colors: {
         button: {
-          DEFAULT: '#6C51F5',
-          dark: '#3D2AAE',
+          DEFAULT: '#FFFFFF',
+          dark: '#000000',
         },
         title: {
           DEFAULT: '#6C51F5',
+          dark: '#ebff00',
+        },
+        paragraph: {
+          DEFAULT: '#000000',
           dark: '#FFFFFF',
         },
         background: {
@@ -18,6 +22,7 @@ export default {
           dark: '#222831',
           primary: '#6C51F5',
           ['primary-dark']: '#3D2AAE',
+          secondary: '#ebff00',
         },
       },
     },

@@ -10,7 +10,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
   position: relative;
 }
-
-body * {
-  @apply transition-colors duration-200;
-}
