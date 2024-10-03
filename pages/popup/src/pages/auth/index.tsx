@@ -1,0 +1,30 @@
+import { Button, Fade, Text } from '@extension/ui';
+import type { FC } from 'react';
+
+const Title = Text.Title;
+const Paragraph = Text.Paragraph;
+export interface LoginProps {}
+
+export const Login: FC<LoginProps> = () => {
+  return (
+    <div className="flex flex-1 items-start justify-center flex-col">
+      <Fade fromTop>
+        <Title>Hey there!</Title>
+      </Fade>
+      <Fade fromTop delay={0.2}>
+        <Paragraph>
+          We noticed that we don&apos;t have the neccesary credentials to access the products in the Lumenalta store.
+          Please click the button below to go there and login.
+        </Paragraph>
+      </Fade>
+      <Fade delay={0.4} fromTop className="w-full flex justify-center mb-4">
+        <Button>Go to the shop</Button>
+      </Fade>
+      <Fade fromTop delay={0.6}>
+        <Paragraph className="text-center text-sm">
+          Once logged in, we don&apos;t have to do this process again
+        </Paragraph>
+      </Fade>
+    </div>
+  );
+};
