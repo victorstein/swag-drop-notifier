@@ -2,11 +2,13 @@ import { MainLayout } from '@src/layouts/mainLayout';
 import { createHashRouter, type RouteObject } from 'react-router-dom';
 import Main from '../pages/main';
 import { withLayout } from '@extension/shared';
+import { AuthenticatedRoute } from '@extension/ui';
+import { Login } from '@src/pages/auth';
 
 const routerDefinition: RouteObject[] = [
   {
     path: '/',
-    element: <Main />,
+    element: <AuthenticatedRoute component={<Main />} />,
     loader: async (): Promise<null> => {
       return new Promise(resolve => {
         setTimeout(() => {
@@ -14,6 +16,10 @@ const routerDefinition: RouteObject[] = [
         }, 1500);
       });
     },
+  },
+  {
+    path: '/auth',
+    element: <Login />,
   },
 ];
 
