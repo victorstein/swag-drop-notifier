@@ -1,18 +1,38 @@
-import { motion, cubicBezier, easeInOut } from 'framer-motion';
+import { appStorage } from '@extension/storage';
+import { motion, cubicBezier, easeInOut, useAnimation } from 'framer-motion';
+import { useEffect } from 'react';
 
 export const LoadingScreen = () => {
+  const isAppLoading = appStorage.use.isLoading();
   const logo = 'popup/logo.svg';
+  const control = useAnimation();
+
+  const animation = {
+    visible: {
+      y: 0,
+    },
+    hidden: {
+      y: '-100%',
+      transition: {
+        duration: 0.3,
+      },
+    },
+  };
+
+  useEffect(() => {
+    if (isAppLoading === false) {
+      control.start('hidden');
+    }
+  }, [isAppLoading, control]);
 
   return (
     <motion.div
-      animate={{
-        y: '-100%',
-      }}
       transition={{
         easings: easeInOut,
-        duration: 0.3,
-        delay: 1.2,
       }}
+      variants={animation}
+      initial="visible"
+      animate={control}
       className={
         'flex justify-center items-center h-screen w-screen bg-background-primary absolute dark:bg-background-primary-dark'
       }>
@@ -28,6 +48,8 @@ export const LoadingScreen = () => {
           easings: cubicBezier(0.83, 0, 0.17, 1),
           duration: 1,
           delay: 0.2,
+          repeat: Infinity,
+          repeatDelay: 0.4,
         }}
       />
       <img src={chrome.runtime.getURL(logo)} className="filter grayscale brightness-0 invert" alt="logo" />
