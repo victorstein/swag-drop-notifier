@@ -26,9 +26,6 @@ importers:
       zustand:
         specifier: 4.5.5
         version: 4.5.5(@types/react@18.3.10)(react@18.3.1)
-      zustand-chrome-storage:
-        specifier: ^1.0.0
-        version: 1.0.0(@types/react@18.3.10)(react@18.3.1)
     devDependencies:
       '@types/chrome':
         specifier: ^0.0.270
@@ -435,6 +432,9 @@ importers:
       '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
+      '@types/chrome':
+        specifier: ^0.0.270
+        version: 0.0.270
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -4286,9 +4286,6 @@ packages:
   zip-stream@6.0.1:
     resolution: {integrity: sha512-zK7YHHz4ZXpW89AHXUPbQVGKI7uvkd3hzusTdotCg1UxyaVtg0zFJSTfW/Dq5f7OBBVnq6cZIaC8Ti4hb6dtCA==}
     engines: {node: '>= 14'}
-
-  zustand-chrome-storage@1.0.0:
-    resolution: {integrity: sha512-VszYbxJ+6LWW8dLElhT8Yus/qoTMpEXuYns+Koom5vUeH8RoTqiD/g1ZoKTlDdaVRSzN7sqNzvHSfrFdD4O6QQ==}
 
   zustand@4.5.5:
     resolution: {integrity: sha512-+0PALYNJNgK6hldkgDq2vLrw5f6g/jCInz52n9RTpropGgeAf/ioFUCdtsjCqu4gNhW9D01rUQBROoRjdzyn2Q==}
@@ -8521,14 +8518,6 @@ snapshots:
       archiver-utils: 5.0.2
       compress-commons: 6.0.2
       readable-stream: 4.5.2
-
-  zustand-chrome-storage@1.0.0(@types/react@18.3.10)(react@18.3.1):
-    dependencies:
-      zustand: 4.5.5(@types/react@18.3.10)(react@18.3.1)
-    transitivePeerDependencies:
-      - '@types/react'
-      - immer
-      - react
 
   zustand@4.5.5(@types/react@18.3.10)(react@18.3.1):
     dependencies:
