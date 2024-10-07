@@ -1,6 +1,10 @@
 import { AppStorage, AuthStorage, ThemeStorage } from '../impl';
 
 const checkIfStoresAreHydrated = () => {
+  if (typeof chrome === 'undefined') {
+    return true;
+  }
+
   const hydrationArray = [ThemeStorage.getState().isStoreHydrated, AuthStorage.getState().isStoreHydrated];
   const areStoresHydrated = hydrationArray.every(storeHydrated => storeHydrated === true);
 
