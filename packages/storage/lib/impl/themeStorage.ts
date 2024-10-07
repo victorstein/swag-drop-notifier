@@ -1,5 +1,4 @@
-import { ChromeLocalStorage } from 'zustand-chrome-storage';
-import { createSelectors } from '../utils';
+import { createSelectors, chromeLocalStorage } from '../utils';
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { flushSync } from 'react-dom';
@@ -11,24 +10,28 @@ export enum Theme {
 
 export interface IThemeStorageQueries {
   theme: Theme;
+  isStoreHydrated: boolean;
 }
 
 export interface IThemeStorageMutations {
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
+  setStoreHydrated: (isStoreHydrated: boolean) => void;
   resetTheme: () => void;
 }
 
 export type IThemeStorage = IThemeStorageQueries & IThemeStorageMutations;
 
 const scopedWindow = typeof window !== 'undefined' ? window : undefined;
+const defaultTheme = scopedWindow
+  ? scopedWindow?.matchMedia('(prefers-color-scheme: dark)').matches
+    ? Theme.DARK
+    : Theme.LIGHT
+  : Theme.LIGHT;
 
 const ThemeStorageInitialState: IThemeStorageQueries = {
-  theme: scopedWindow
-    ? scopedWindow.matchMedia('(prefers-color-scheme: dark)').matches
-      ? Theme.DARK
-      : Theme.LIGHT
-    : Theme.LIGHT,
+  theme: defaultTheme,
+  isStoreHydrated: false,
 };
 
 export const ThemeStorage = create<IThemeStorage>()(
@@ -60,12 +63,16 @@ export const ThemeStorage = create<IThemeStorage>()(
           },
         );
       },
+      setStoreHydrated: (isStoreHydrated: boolean) => set({ isStoreHydrated }),
       resetTheme: () => set(ThemeStorageInitialState),
     }),
     {
       name: 'theme-storage',
-      storage: createJSONStorage(() => ChromeLocalStorage),
+      storage: createJSONStorage(() => chromeLocalStorage),
       partialize: state => ({ theme: state.theme }),
+      onRehydrateStorage: state => {
+        return () => state.setStoreHydrated(true);
+      },
     },
   ),
 );

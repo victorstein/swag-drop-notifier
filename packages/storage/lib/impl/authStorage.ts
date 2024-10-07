@@ -1,32 +1,38 @@
-import { createSelectors } from '../utils';
+import { createSelectors, chromeLocalStorage } from '../utils';
 import { create } from 'zustand';
-import { ChromeLocalStorage } from 'zustand-chrome-storage';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
 export interface IAuthStorageQueries {
-  isAuth: boolean;
+  authCookie: string | null;
+  isStoreHydrated: boolean;
 }
 
 export interface IAuthStorageMutations {
-  setAuth: (isAuth: boolean) => void;
+  setAuthCookie: (authCookie: string) => void;
+  setStoreHydrated: (isStoreHydrated: boolean) => void;
 }
 
 export interface IAuthStorage extends IAuthStorageQueries, IAuthStorageMutations {}
 
 const AuthStorageInitialState: IAuthStorageQueries = {
-  isAuth: false,
+  authCookie: null,
+  isStoreHydrated: false,
 };
 
 export const AuthStorage = create<IAuthStorage>()(
   persist(
     set => ({
       ...AuthStorageInitialState,
-      setAuth: (isAuth: boolean) => set({ isAuth }),
+      setAuthCookie: (authCookie: string) => set({ authCookie }),
+      setStoreHydrated: (isStoreHydrated: boolean) => set({ isStoreHydrated }),
     }),
     {
       name: 'auth-storage',
-      storage: createJSONStorage(() => ChromeLocalStorage),
-      partialize: state => ({ isAuth: state.isAuth }),
+      storage: createJSONStorage(() => chromeLocalStorage),
+      partialize: state => ({ authCookie: state.authCookie }),
+      onRehydrateStorage: state => {
+        return () => state.setStoreHydrated(true);
+      },
     },
   ),
 );
