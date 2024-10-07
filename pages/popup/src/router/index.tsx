@@ -4,18 +4,13 @@ import Main from '../pages/main';
 import { withLayout } from '@extension/shared';
 import { AuthenticatedRoute } from '@extension/ui';
 import { Login } from '@src/pages/auth';
+import { loadAsyncStores } from '@extension/storage/lib/utils';
 
 const routerDefinition: RouteObject[] = [
   {
     path: '/',
     element: <AuthenticatedRoute component={<Main />} />,
-    loader: async (): Promise<null> => {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve(null);
-        }, 1500);
-      });
-    },
+    loader: (): Promise<null> => loadAsyncStores,
   },
   {
     path: '/auth',
