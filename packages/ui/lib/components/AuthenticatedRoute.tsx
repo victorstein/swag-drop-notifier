@@ -1,4 +1,4 @@
-import { authStorage } from '@extension/storage';
+import { useIsAuth } from '@extension/shared';
 import type { FC } from 'react';
 import { Navigate } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ export interface AuthenticatedRouteProps {
 }
 
 export const AuthenticatedRoute: FC<AuthenticatedRouteProps> = ({ component, ...rest }) => {
-  const isAuth = authStorage.use.isAuth();
+  const isAuth = useIsAuth();
 
   if (!isAuth) {
     return <Navigate to="/auth" />;
