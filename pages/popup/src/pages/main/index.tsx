@@ -8,7 +8,7 @@ const Main = () => {
   const toggleTheme = themeStorage.use.toggleTheme();
 
   return (
-    <div className="flex flex-col p-4 items-center justify-center">
+    <div className="flex flex-col items-start justify-start">
       <Title>Main Content</Title>
       <div>
         <Button onClick={toggleTheme}>Toggle Theme</Button>
