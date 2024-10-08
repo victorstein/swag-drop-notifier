@@ -51,7 +51,10 @@ export const Login: FC<LoginProps> = () => {
 
   const isAuthenticatedHandler = () => {
     return (
-      <div className="flex flex-1 items-start justify-center flex-col" key={2}>
+      <motion.div
+        exit={{ opacity: 0, transition: { duration: 0.2 } }}
+        className="flex flex-1 items-start justify-center flex-col"
+        key={2}>
         <Fade fromTop delay={0.2}>
           <Title>You are all set!</Title>
         </Fade>
@@ -64,13 +67,16 @@ export const Login: FC<LoginProps> = () => {
         <Fade fromTop delay={0.6}>
           <Button onClick={() => navigate('/')}>Go to the store</Button>
         </Fade>
-      </div>
+      </motion.div>
     );
   };
 
   const loadingHandler = () => {
     return (
-      <div className="flex flex-1 items-start justify-center flex-col" key={1}>
+      <motion.div
+        exit={{ opacity: 0, transition: { duration: 0.2 } }}
+        className="flex flex-1 items-start justify-center flex-col"
+        key={1}>
         <Fade fromTop delay={0.2}>
           <Title>Almost there!</Title>
         </Fade>
@@ -90,13 +96,16 @@ export const Login: FC<LoginProps> = () => {
             store.
           </Paragraph>
         </Fade>
-      </div>
+      </motion.div>
     );
   };
 
   const defaultHandler = () => {
     return (
-      <div className="flex flex-1 items-start justify-center flex-col" key={0}>
+      <motion.div
+        exit={{ opacity: 0, transition: { duration: 0.2 } }}
+        className="flex flex-1 items-start justify-center flex-col"
+        key={0}>
         <Fade fromTop delay={0.2}>
           <Title>Hey there!</Title>
         </Fade>
@@ -114,12 +123,12 @@ export const Login: FC<LoginProps> = () => {
             Once logged in, we don&apos;t have to do this process again
           </Paragraph>
         </Fade>
-      </div>
+      </motion.div>
     );
   };
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {(() => {
         switch (true) {
           case isAuthenticated === true:
