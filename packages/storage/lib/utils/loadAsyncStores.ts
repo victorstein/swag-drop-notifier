@@ -1,4 +1,4 @@
-import { AppStorage, AuthStorage, ThemeStorage } from '../impl';
+import { AuthStorage, ThemeStorage } from '../impl';
 
 const checkIfStoresAreHydrated = () => {
   if (typeof chrome === 'undefined') {
@@ -12,13 +12,12 @@ const checkIfStoresAreHydrated = () => {
 };
 
 export const loadAsyncStores: Promise<null> = new Promise(resolve => {
-  const minimumLoadingTime = 1500;
+  const minimumLoadingTime = 1000;
   let elapsedMilliseconds = 0;
 
   const interval = setInterval(() => {
     if (checkIfStoresAreHydrated() && elapsedMilliseconds >= minimumLoadingTime) {
       clearInterval(interval);
-      AppStorage.setState({ isLoading: false });
       resolve(null);
     }
 
