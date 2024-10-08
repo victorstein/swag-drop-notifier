@@ -1,18 +1,20 @@
-import { themeStorage } from '@extension/storage';
-import { Button, Text } from '@extension/ui';
+import { authStorage } from '@extension/storage';
+import { Button, Fade, Text } from '@extension/ui';
 import { MainLayout } from '@src/layouts/mainLayout';
 
 const Title = Text.Title;
 
 const Main = () => {
-  const toggleTheme = themeStorage.use.toggleTheme();
+  const resetAuthStore = authStorage.use.resetAuthStore();
 
   return (
     <div className="flex flex-col items-start justify-start">
-      <Title>Main Content</Title>
-      <div>
-        <Button onClick={toggleTheme}>Toggle Theme</Button>
-      </div>
+      <Fade delay={0.2}>
+        <Title>Main Content</Title>
+      </Fade>
+      <Fade delay={0.4}>
+        <Button onClick={resetAuthStore}>Logout</Button>
+      </Fade>
     </div>
   );
 };
