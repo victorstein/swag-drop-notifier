@@ -9,6 +9,7 @@ export interface IAuthStorageQueries {
 
 export interface IAuthStorageMutations {
   setAuthCookie: (authCookie: string) => void;
+  resetAuthStore: () => void;
   setStoreHydrated: (isStoreHydrated: boolean) => void;
 }
 
@@ -24,6 +25,7 @@ export const AuthStorage = create<IAuthStorage>()(
     set => ({
       ...AuthStorageInitialState,
       setAuthCookie: (authCookie: string) => set({ authCookie }),
+      resetAuthStore: () => set(AuthStorageInitialState),
       setStoreHydrated: (isStoreHydrated: boolean) => set({ isStoreHydrated }),
     }),
     {
