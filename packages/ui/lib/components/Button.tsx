@@ -8,7 +8,7 @@ export function Button({ className, children, ...props }: ButtonProps) {
   return (
     <button
       className={cn(
-        'px-5 py-3 text-sm border border-black bg-button text-black dark:text-white dark:hover:text-black dark:hover:bg-button dark:bg-button-dark hover:bg-button-dark hover:text-white transition-colors duration-200',
+        'px-5 py-3 text-sm font-normal font-primary border border-black bg-button text-black dark:text-white dark:hover:text-black dark:hover:bg-button dark:bg-button-dark hover:bg-button-dark hover:text-white transition-colors duration-200',
         className,
       )}
       {...props}>

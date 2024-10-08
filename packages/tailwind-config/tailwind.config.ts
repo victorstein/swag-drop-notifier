@@ -4,6 +4,9 @@ export default {
   darkMode: 'selector',
   theme: {
     extend: {
+      fontFamily: {
+        primary: 'primary',
+      },
       colors: {
         button: {
           DEFAULT: '#FFFFFF',

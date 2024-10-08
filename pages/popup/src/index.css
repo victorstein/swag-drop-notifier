@@ -19,3 +19,48 @@ body {
   animation: none;
   mix-blend-mode: normal;
 }
+
+@layer base {
+  @font-face {
+    font-family: 'primary';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../public/fonts/regular.woff') format('opentype');
+  }
+   @font-face {
+    font-family: 'primary';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('../public/fonts/light.woff') format('opentype');
+  }
+  @font-face {
+    font-family: 'primary';
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+    src: url('../public/fonts/thin.woff') format('opentype');
+  }
+  @font-face {
+    font-family: 'primary';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('../public/fonts/medium.woff') format('opentype');
+  }
+  @font-face {
+    font-family: 'primary';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../public/fonts/bold.woff') format('opentype');
+  }
+  @font-face {
+    font-family: 'primary';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url('../public/fonts/black.woff') format('opentype');
+  }
+}
