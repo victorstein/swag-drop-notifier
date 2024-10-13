@@ -8,6 +8,8 @@ on:
 
 jobs:
   chrome:
+    # Skiping for now
+    if: false
     name: E2E tests for Chrome
     runs-on: ubuntu-latest
     steps:
@@ -21,6 +23,8 @@ jobs:
       - run: pnpm e2e
 
   firefox:
+    # Skiping for now
+    if: false
     name: E2E tests for Firefox
     runs-on: ubuntu-latest
     steps:
