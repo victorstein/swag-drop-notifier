@@ -1,11 +1,10 @@
 import { useIsAuth } from '@extension/shared';
 import { authStorage } from '@extension/storage';
-import { Button, Fade, Text } from '@extension/ui';
-import { AnimatePresence } from 'framer-motion';
+import { Button, Fade, LumenSpinner, Text } from '@extension/ui';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useEffect, useState, type FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useInterval } from 'usehooks-ts';
-import { motion } from 'framer-motion';
 
 const Title = Text.Title;
 const Paragraph = Text.Paragraph;
@@ -84,11 +83,7 @@ export const Login: FC<LoginProps> = () => {
           <Paragraph>We are waiting for you to login to the Lumenalta store.</Paragraph>
         </Fade>
         <Fade fromTop delay={0.6} className="flex w-full justify-center mb-10">
-          <img
-            className="w-16 h-16 animate-[spin_1.7s_cubic-bezier(0.22,0.61,0.36,1)_infinite] dark:filter dark:grayscale dark:brightness-0 dark:invert"
-            src={chrome.runtime.getURL('popup/logo-alone.svg')}
-            alt="spinner"
-          />
+          <LumenSpinner />
         </Fade>
         <Fade fromBottom delay={0.8}>
           <Paragraph className="text-sm text-center">
