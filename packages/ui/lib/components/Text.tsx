@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, FC } from 'react';
+import type { ComponentPropsWithoutRef, FC, ReactNode } from 'react';
 import { cn } from '../utils';
 
 export interface TitleProps extends ComponentPropsWithoutRef<'h1'> {
@@ -6,7 +6,7 @@ export interface TitleProps extends ComponentPropsWithoutRef<'h1'> {
 }
 
 export interface ParagraphProps extends ComponentPropsWithoutRef<'p'> {
-  children: string;
+  children: ReactNode;
 }
 
 const Title: FC<TitleProps> = ({ className, ...props }) => {
