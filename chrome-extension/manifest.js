@@ -26,13 +26,13 @@ const manifest = {
   name: '__MSG_extensionName__',
   version: packageJson.version,
   description: '__MSG_extensionDescription__',
-  host_permissions: ['<all_urls>'],
+  host_permissions: ['<all_urls>', 'https://shop.lumenalta.com/*'],
   permissions: ['storage', 'scripting', 'tabs', 'notifications', 'cookies', 'activeTab'],
   // options_page: 'options/index.html',
-  // background: {
-  //   service_worker: 'background.iife.js',
-  //   type: 'module',
-  // },
+  background: {
+    service_worker: 'background.iife.js',
+    type: 'module',
+  },
   action: {
     default_popup: 'popup/index.html',
     default_icon: 'icon-34.png',
@@ -43,20 +43,24 @@ const manifest = {
   icons: {
     128: 'icon-128.png',
   },
-  // content_scripts: [
-  //   {
-  //     matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-  //     js: ['content/index.iife.js'],
-  //   },
-  //   {
-  //     matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-  //     js: ['content-ui/index.iife.js'],
-  //   },
-  //   {
-  //     matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-  //     css: ['content.css'], // public folder
-  //   },
-  // ],
+  content_scripts: [
+    // {
+    //   matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+    //   js: ['content/index.iife.js'],
+    // },
+    // {
+    //   matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+    //   js: ['content-runtime/index.iife.js'],
+    // },
+    // {
+    //   matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+    //   js: ['content-ui/index.iife.js'],
+    // },
+    // {
+    //   matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+    //   css: ['content.css'], // public folder
+    // },
+  ],
   // devtools_page: 'devtools/index.html',
   web_accessible_resources: [
     {

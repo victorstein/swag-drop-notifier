@@ -1,5 +1,5 @@
 import { resolve } from 'node:path';
-import { defineConfig, type PluginOption } from "vite";
+import { defineConfig, type PluginOption } from 'vite';
 import libAssetsPlugin from '@laynezh/vite-plugin-lib-assets';
 import makeManifestPlugin from './utils/plugins/make-manifest-plugin';
 import { watchPublicPlugin, watchRebuildPlugin } from '@extension/hmr';
@@ -10,6 +10,11 @@ const srcDir = resolve(rootDir, 'src');
 
 const outDir = resolve(rootDir, '..', 'dist');
 export default defineConfig({
+  define: {
+    'process.env': {
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    },
+  },
   resolve: {
     alias: {
       '@root': rootDir,
@@ -41,6 +46,10 @@ export default defineConfig({
     watch: watchOption,
     rollupOptions: {
       external: ['chrome'],
+      onwarn: (warning, warn) => {
+        if (warning.message.includes('sourcemap')) return;
+        warn(warning);
+      },
     },
   },
   envDir: '../',
