@@ -30,7 +30,9 @@
     "update-version": "bash update_version.sh"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.59.0",
     "framer-motion": "^11.9.0",
+    "framer-motion-carousel": "^2.0.4",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-icons": "^5.3.0",
@@ -39,6 +41,7 @@
     "zustand": "4.5.5"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.59.2",
     "@types/chrome": "^0.0.270",
     "@types/node": "^20.16.5",
     "@types/react": "^18.3.10",
