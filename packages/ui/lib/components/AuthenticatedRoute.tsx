@@ -6,12 +6,12 @@ export interface AuthenticatedRouteProps {
   component: React.ReactNode;
 }
 
-export const AuthenticatedRoute: FC<AuthenticatedRouteProps> = ({ component, ...rest }) => {
+export const AuthenticatedRoute: FC<AuthenticatedRouteProps> = ({ component }) => {
   const isAuth = useIsAuth();
 
   if (!isAuth) {
     return <Navigate to="/auth" />;
   }
 
-  return <div {...rest}>{component}</div>;
+  return <>{component}</>;
 };
